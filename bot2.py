@@ -9,21 +9,21 @@ from discord import FFmpegPCMAudio
 intents = discord.Intents.all()
 intents.members = True
 client = commands.Bot(command_prefix='!', intents=intents)
-TOKEN = 'MTE0MzY0NjA4MDM0NTU5MTg3OA.GuZyOc.hULKYoRs4qxHt8P5AqywVn3uqm2ZxEAlUagbIM'
-channelID = 1156578431065137243
+TOKEN = "insert your own token"
+channelID = "get the channel id by enabling developer options on discord on selecting a channel"
 
 
 #text to speech
-voiceKey = '200b849543f842c79d6d86167dcc7945'
-voiceID = 'Cwbia66vfaPQJQOmF708xFOszsg2'
+voiceKey = 'play.ht voice key'
+voiceID = 'play.ht voice id'
 headers = {'Authorization': voiceKey, 'X-User-Id': voiceID, 'content-type': 'application/json', "accept": "text/event-stream"}
 tts_url = 'https://play.ht/api/v2/tts'
 
 
 #chatbot
 chat_url = 'https://www.botlibre.com/rest/json/chat'
-botID = '49467149'
-appID = '8281860679139832729'
+botID = 'botlibre id'
+appID = 'botlibre app id'
 
 
 
@@ -45,7 +45,7 @@ async def on_member_remove(member):
 
 @client.command(pass_context = True)
 async def menu(ctx):
-    file = discord.File("sol bot.png", filename="sol bot.png")
+    file = discord.File("imageOfChoice", filename="ImageOfChoice")
     embed = discord.Embed(title='Sol-bot Commands', description='unlike the real Sol, sol-bot is not very smart and does not respond to profanities, so please treat him like the failed experiment he is.', colour=discord.Colour.dark_embed())
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1101268045676163146/1155869490874155048/sol_bot.png")
     embed.add_field(name='!join', value='add me to your discord call!')
@@ -60,7 +60,7 @@ async def join(ctx):
     if ctx.author.voice:
         channel = ctx.message.author.voice.channel
         voice = await channel.connect()
-        source = FFmpegPCMAudio('pillarManTheme.mp3')
+        source = FFmpegPCMAudio('AudioOfChoice.mp3')
         player = voice.play(source)
     else:
         await ctx.send('nope')
@@ -69,7 +69,7 @@ async def join(ctx):
 async def leave(ctx):
     if ctx.voice_client:
         channel = ctx.message.author.voice.channel
-        source = FFmpegPCMAudio('mario goodbye.mp3')
+        source = FFmpegPCMAudio('audioOfChoice.mp3')
         player = ctx.guild.voice_client.pause()
         player = ctx.guild.voice_client.play(source)
         time.sleep(1.9)
